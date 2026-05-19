@@ -1,95 +1,91 @@
 // ==============================================================================
-// PRODUCT: CZ ARC REACTOR IGNITER (SARASWATI PLASMA CORE)
+// PRODUCT: CZ MINIATURIZED RING ARC REACTOR (NANO-SCALE PLASMA CORE)
 // TARGET HARDWARE: ESP32 DUAL-CORE SILICON (WOKWI SIMULATION)
-// VISION: ZERO-G PLASMA STABILIZATION FOR STABLE NUCLEAR FUSION
+// VISION: RING-SIZED PORTABLE NUCLEAR FUSION STABILIZATION
 // FOUNDER: PUNYAPRASHUN
 // FILE TYPE: BLACK-BOX PRODUCTION GRADE
 // ==============================================================================
 
 #include <Arduino.h>
 
-// Arc Reactor का रैंडम, प्लाज्मा डेटा स्ट्रक्चर (Input Matrix)
-struct ArcPlasmaMatrix {
-  float plasma_temp_kelvin;    // प्लाज्मा का तापमान (Kelvin in Billions)
-  float magnetic_con_failure;   // मैग्नेटिक फील्ड की विफलता (0-100%)
-  float radiant_flux;          // रेडिएशन शॉक इंडेक्स
-  float energy_surge_spikes;    // एनर्जी आउटपुट में अचानक आए उछाल
+// रिंग साइज आर्किटेक्चर के लिए इनपुट डेटा स्ट्रक्चर
+struct RingPlasmaMatrix {
+  float plasma_temp_kelvin;     // तापमान (Kelvin in Billions)
+  float nano_magnetic_leakage;  // माइक्रो-मीटर स्तर पर चुंबकीय रिसाव (0-100%)
+  float thermal_density_shock;  // रिंग के छोटे साइज के कारण थर्मल लोड (W/mm²)
+  float ring_radius_mm;         // रिएक्टर का भौतिक आकार (रिंग साइज = 15.0 mm)
 };
 
 // ==============================================================================
 // 🛡️ THE BLACK-BOX INTERFACE
 // ==============================================================================
-// यह कोर स्टेबलाइजेशन एल्गोरिदम के आंतरिक कैलकुलेशन को छुपा कर रखता है।
-void executeSovereignFusionStabilization(ArcPlasmaMatrix matrix);
+// यह इंटरफ़ेस कोर एल्गोरिदम के नैनो-स्केल कैलकुलेशन और वेरिएबल स्कोप को सुरक्षित रखता है।
+void executeRingFusionStabilization(RingPlasmaMatrix ring_core);
 
 void setup() {
   Serial.begin(115200);
-  randomSeed(analogRead(0)); // प्योर रियल-टाइम अनप्रेडिक्टेबिलिटी (Cosmic Noise Input)
+  randomSeed(analogRead(0)); 
   
   Serial.println("==================================================================");
-  Serial.println("☢️ CZ ARC REACTOR CORES: PLASMA STABILIZER SYSTEM (IGNITION) ☢️");
+  Serial.println("💍 CZ MICRO-RING ARC REACTOR: NANO-PLASMA IGNITION SEQUENCE 💍");
   Serial.println("==================================================================");
   delay(1500);
 }
 
 void loop() {
-  ArcPlasmaMatrix reactor_state;
+  RingPlasmaMatrix ring_state;
   
-  // 1. प्लाज्मा का रियल-टाइम रैंडम डेटा इन्जेक्ट करना (Chaos Input Injection)
-  reactor_state.plasma_temp_kelvin = random(200, 1500);      
-  reactor_state.magnetic_con_failure = random(60, 100);    
-  reactor_state.radiant_flux = random(70, 100);            
-  reactor_state.energy_surge_spikes = random(10, 500);      
+  // रिंग साइज के कड़े मापदंड (Chaos Injection in Micro-Scale)
+  ring_state.ring_radius_mm = 15.0;                         // स्थिर आकार: 15 मिलीमीटर (Ring Size)
+  ring_state.plasma_temp_kelvin = random(200, 1500);       
+  ring_state.nano_magnetic_leakage = random(70, 100);       // छोटे स्केल पर भारी मैग्नेटिक लीकेज का खतरा
+  ring_state.thermal_density_shock = random(500, 2500);     // अत्यधिक उच्च ऊर्जा घनत्व (Extreme Density)
 
-  Serial.println("\n[ALERT]: ARC PLASMA DETECTED. Legacy Containment Systems Falling...");
-  Serial.print(">> PLASMA TEMPERATURE       : "); Serial.print(reactor_state.plasma_temp_kelvin); Serial.println(" Billion Kelvin");
-  Serial.print(">> MAGNETIC FAILURE INDEX   : "); Serial.print(reactor_state.magnetic_con_failure); Serial.println("% (PARALYZED)");
-  Serial.print(">> RADIANT NOISE SHOCK      : "); Serial.print(reactor_state.radiant_flux); Serial.println("%");
-  Serial.print(">> ENERGY SURGE (UNPREDICT) : "); Serial.print(reactor_state.energy_surge_spikes); Serial.println(" MW");
+  Serial.println("\n[ALERT]: NANO-SCALE ARC PLASMA INJECTED IN 15.0mm RING CORE...");
+  Serial.print(">> DESIGN FACTOR (SIZE)     : "); Serial.print(ring_state.ring_radius_mm); Serial.println(" mm [RING SIZE LOCKED]");
+  Serial.print(">> PLASMA TEMPERATURE       : "); Serial.print(ring_state.plasma_temp_kelvin); Serial.println(" Billion Kelvin");
+  Serial.print(">> NANO-MAGNETIC LEAKAGE    : "); Serial.print(ring_state.nano_magnetic_leakage); Serial.println("% (CRITICAL LIMIT)");
+  Serial.print(">> THERMAL DENSITY LOAD     : "); Serial.print(ring_state.thermal_density_shock); Serial.println(" W/mm² (HIGH RISK)");
   Serial.println("------------------------------------------------------------------");
   
-  Serial.println("⚡ [ACTION]: ENGAGING CZ ARC-FUSION MITIGATION CORE... ⚡");
-  delay(800); // सिलिकॉन प्रोसेसिंग लेटेंसी
+  Serial.println("⚡ [ACTION]: INJECTING CZ NANO-LACHAK COMPENSATOR... ⚡");
+  delay(800); 
 
-  // ब्लैक-बॉक्स कोर को रैंडम मैट्रिक्स सौंपना (Execution Gate)
-  executeSovereignFusionStabilization(reactor_state);
+  // ब्लैक-बॉक्स कंपंसेशन एक्जीक्यूशन
+  executeRingFusionStabilization(ring_state);
   
-  delay(2500); // हर 2.5 सेकंड में न्यूक्लियर फ्यूजन डेटा री-फ्रेश होगा
+  delay(2500); 
 }
 
 // ==============================================================================
-// 🛡️ CZ SOVEREIGN BLACK-BOX LOGIC (CORE ARC-FUSION ENCAPSULATION)
+// 🛡️ CZ SOVEREIGN BLACK-BOX LOGIC (MICRO-RING FUSION ENCAPSULATION)
 // ==============================================================================
-void executeSovereignFusionStabilization(ArcPlasmaMatrix matrix) {
-  // A. मैग्नेटिक फील्ड हीलिंग (Hexagonal Re-confinement Core)
-  float cz_magnetic_fix = (100.0 - matrix.magnetic_con_failure) + 94.0; 
+void executeRingFusionStabilization(RingPlasmaMatrix ring_core) {
+  // 1. नैनो-स्केल लचक एल्गोरिदम (Micro-Resonance Compensation)
   
-  // B. रेडिएशन और थर्मल-काइनेटिक एब्जॉर्प्शन (Lachak Wave Absorption)
-  float radiant_noise_filter = matrix.radiant_flux * 0.95;
-  float cz_absorbed_energy_flow = matrix.radiant_flux - radiant_noise_filter + (matrix.energy_surge_spikes * 0.1); 
+  // A. माइक्रो-कंटेनमेंट हीलिंग (Hexagonal Ring Compression)
+  float cz_magnetic_containment = (100.0 - ring_core.nano_magnetic_leakage) + 96.5; 
 
-  // C. फाइनल Arc Reactor स्टेबिलिटी इंडेक्स (The Stark-Prasun Equation)
-  float final_reactor_stability = (cz_magnetic_fix * ((cz_absorbed_energy_flow + 10.0) / 100.0)) / (matrix.magnetic_con_failure / 80.0);
-  
-  if(final_reactor_stability > 100.0) final_reactor_stability = 100.0;
+  // B. थर्मल डिसिपेशन सिमुलेशन (Surface Area Optimization)
+  float dissipation_efficiency = (ring_core.ring_radius_mm / 15.0) * 0.94; 
+  float residual_thermal_stress = ring_core.thermal_density_shock * (1.0 - dissipation_efficiency);
 
-  // 2. HARDWARE DISPLAY OF RESULT (The Unbreakable Proof)
-  Serial.println("\n[CZ ARC-FUSION CORE COMPULSORY VERDICT]:");
-  
-  Serial.print(">> [MAGNETIC]    : Containment Re-locked at: "); Serial.print(cz_magnetic_fix); Serial.println("%");
-  Serial.print(">> [ABSORPTION]  : Fiery Radiation Deflected. Net Energy Captured: "); 
-  Serial.print(cz_absorbed_energy_flow); Serial.println(" MW (STABLE)");
-  
-  Serial.print(">> [STATUS]      : CZ CORE STABILITY RATING: "); 
-  Serial.print(final_reactor_stability); Serial.println("% (ANTI-CRASH LOCKED)"); 
-  
-  // 3. फाइनल वर्डिक्ट: Reactor ON या OFF?
-  if(final_reactor_stability >= 90.0) {
-    Serial.println(">> [STATUS]      : ARC REACTOR IS ONLINE. Fusion Sustainable.");
-    Serial.println("⚠️ [INFO]        : Energy Level: 3 Gigawatts. All Systems Go. ⚠️");
+  // C. फाइनल नैनो-कोर स्टेबिलिटी सूचकांक
+  float ring_stability = (cz_magnetic_containment * 15.0) / (residual_thermal_stress / 10.0);
+  if(ring_stability > 100.0) ring_stability = 100.0;
+
+  // 2. HARDWARE DISPLAY OF RESULT
+  Serial.println("\n[CZ MICRO-CORE PHYSICAL VERDICT]:");
+  Serial.print(">> [MICRO-MAGNETIC]: Field Compressed & Locked at: "); Serial.print(cz_magnetic_containment); Serial.println("%");
+  Serial.print(">> [THERMAL ENERGY]: Residual Surface Stress Deflated to: "); Serial.print(residual_thermal_stress); Serial.println(" W/mm²");
+  Serial.print(">> [CORE RATIO]    : MINIATURIZED CZ STABILITY INDEX: "); Serial.print(ring_stability); Serial.println("%");
+
+  // 3. क्या रिंग रिएक्टर ऑन हुआ?
+  if(ring_stability >= 88.0) {
+    Serial.println(">> [STATUS]        : RING ARC REACTOR IS ONLINE.");
+    Serial.println("⚠️ [INFO]          : 3 Gigawatts Sustained in 15mm Form-Factor. ⚠️");
   } else {
-    Serial.println(">> [STATUS]      : INCREASING HEXAGONAL SHIELD COMPUTATION TO PREVENT CORNER FAILURE...");
+    Serial.println(">> [STATUS]        : NANO-SCALE CRITICAL HEAT DETECTED. EXPANDING HEXAGONAL SHIELD BUFFERS...");
   }
-  
   Serial.println("==================================================================");
 }
